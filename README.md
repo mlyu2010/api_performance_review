@@ -1,8 +1,7 @@
 
 # Agents & Tasks REST API
 
-Java 17 and Python 3.12 based projects built to implement requirements stated in the 
-Trase_Backend_Take-home_Test.pdf
+Java 17 and Python 3.12 based projects built to implement certain requirements stated.
 
 ## Dependencies
 - Docker
