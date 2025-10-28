@@ -1,0 +1,51 @@
+spring:
+  # JPA Configuration for Development
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        generate_statistics: true
+
+  # Jackson - Pretty print in development
+  jackson:
+    serialization:
+      indent-output: true
+
+# Server Configuration for Development
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_param
+    include-exception: true
+
+# Actuator - Full exposure in development
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+# Logging for Development
+logging:
+  level:
+    root: INFO
+    com.agentsapi: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+# Enable Swagger in Development
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true

@@ -1,0 +1,62 @@
+spring:
+  # Disable DevTools in production
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
+
+  # JPA Configuration for Production
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        generate_statistics: false
+        format_sql: false
+        use_sql_comments: false
+
+  # Jackson - No pretty print in production
+  jackson:
+    serialization:
+      indent-output: false
+
+# Server Configuration for Production
+server:
+  error:
+    include-message: never
+    include-binding-errors: never
+    include-stacktrace: never
+    include-exception: false
+  shutdown: graceful
+
+# Actuator - Limited exposure in production
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  endpoint:
+    health:
+      show-details: never
+
+# Logging for Production
+logging:
+  level:
+    root: WARN
+    com.agentsapi: INFO
+    org.springframework: WARN
+    org.hibernate: ERROR
+  file:
+    name: /app/logs/agents-tasks-api.log
+    max-size: 100MB
+    max-history: 30
+    total-size-cap: 3GB
+
+# Disable Swagger in Production (optional)
+springdoc:
+  swagger-ui:
+    enabled: ${SWAGGER_ENABLED:false}
+  api-docs:
+    enabled: ${API_DOCS_ENABLED:false}
